@@ -1,21 +1,34 @@
-apiVersion: config.istio.io/v1alpha2
-kind: RouteRule
+
+apiVersion: networking.istio.io/v1alpha3
+
+kind: VirtualService
+
 metadata:
+
   name: customer-demo-service
+
 spec:
-  destination:
-    name: customer-demo-service
-  route:
-  - labels:
-      version: v1
-    weight: 50
-  - labels:
-      version: v2
-    weight: 50
-  httpFault:
-    delay:
-      percent: 10
-      fixedDelay: 3s
-    abort:
-      percent: 10
-      httpStatus: 500
+
+  hosts:
+
+    - customer-demo-service
+
+  http:
+
+  - route:
+
+    - destination:
+
+        host: customer-demo-service
+
+        subset: v1
+
+      weight: 50
+
+    - destination:
+
+        host: customer-demo-service
+
+        subset: v2
+
+      weight: 50
