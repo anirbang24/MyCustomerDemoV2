@@ -1,0 +1,66 @@
+apiVersion: networking.istio.io/v1alpha3
+
+kind: Gateway
+
+metadata:
+
+  name: customer-demo-service-v2-gateway
+
+spec:
+
+  selector:
+
+    istio: ingressgateway # use istio default controller
+
+  servers:
+
+  - port:
+
+      number: 80
+
+      name: http
+
+      protocol: HTTP
+
+    hosts:
+
+    - "*"
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+
+kind: VirtualService
+
+metadata:
+
+  name: customer-demo-service-v2
+
+spec:
+
+  hosts:
+
+  - "*"
+
+  gateways:
+
+  - customer-demo-service-v2-gateway
+
+  http:
+
+  - match:
+
+    - uri:
+
+        exact: /customer
+
+
+    route:
+
+    - destination:
+
+        host: customer-demo-service-2
+
+        port:
+
+          number: 8090
