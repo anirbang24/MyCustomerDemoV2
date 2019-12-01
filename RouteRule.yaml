@@ -8,10 +8,10 @@ spec:
   route:
   - labels:
       version: v1
-    weight: 20
+    weight: 50
   - labels:
       version: v2
-    weight: 80
+    weight: 50
   httpFault:
     delay:
       percent: 10
