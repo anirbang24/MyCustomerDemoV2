@@ -44,7 +44,7 @@ spec:
 
   gateways:
 
-  - customer-demo-service-v2-gateway
+  - customer-demo-service-gateway
 
   http:
 
@@ -59,7 +59,7 @@ spec:
 
     - destination:
 
-        host: customer-demo-service-2
+        host: customer-demo-service
 
         port:
 
