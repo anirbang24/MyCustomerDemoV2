@@ -4,11 +4,11 @@ kind: Service
 
 metadata:
 
-  name: customer-demo-service
+  name: customer-demo-service-v2
 
   labels:
 
-    app: customer-demo-service
+    app: customer-demo-service-v2
 
 spec:
 
@@ -16,13 +16,13 @@ spec:
 
   ports:
 
-  - port: 8080
+  - port: 8090
 
     name: http
 
   selector:
 
-    app: customer-demo-service
+    app: customer-demo-service-v2
 
 ---
 
@@ -32,7 +32,7 @@ kind: ServiceAccount
 
 metadata:
 
-  name: customer-demo-service
+  name: customer-demo-service-v2
 
   labels:
 
@@ -52,7 +52,7 @@ metadata:
   
   labels:
 
-    app: customer-demo-service
+    app: customer-demo-service-v2
 
     version: v2
 
@@ -65,7 +65,7 @@ spec:
   
       matchLabels:
   
-        app: customer-demo-service
+        app: customer-demo-service-v2
   
         version: v2
 
@@ -81,13 +81,13 @@ spec:
 
       labels:
 
-        app: customer-demo-service
+        app: customer-demo-service-v2
 
         version: v2
 
     spec:
       
-      serviceAccountName: customer-demo-service
+      serviceAccountName: customer-demo-service-2
       
       containers:
 
@@ -95,11 +95,11 @@ spec:
 
         imagePullPolicy: IfNotPresent
 
-        name: customer-demo-service
+        name: customer-demo-service-v2
 
         ports:
 
-        - containerPort: 8080
+        - containerPort: 8090
 
       - args:
 
