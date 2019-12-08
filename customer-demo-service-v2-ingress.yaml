@@ -1,0 +1,8 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: customer-demo-service-v2-ingress
+spec:
+  backend:
+    serviceName: customer-demo-service-v2
+    servicePort: 8090
